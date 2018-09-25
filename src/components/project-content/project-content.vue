@@ -30,7 +30,9 @@ export default {
     width: @firstSideBarWidth;
     top: 0px;
     bottom: 0px;
-    background-color: red;
+    background-color: @firstSideBarBackgroundColor;
+    color: @firstSideBarFontColor;
+    text-align: center;
 }
 .right-part {
     position: absolute;

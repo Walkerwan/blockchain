@@ -25,17 +25,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+@import '../../../styles/theme.less';
 .left-container {
   width: 75px;
-  background: yellow;
+  background: @firstSideBarBackgroundColor;
   .list-item {
     display: block;
     width: 75px;
     height: 75px;
     line-height: 75px;
+    color: @firstSideBarFontColor;
+    font-size: @firstSideBarFontSize;
     &:hover {
         cursor: pointer;
-        background-color: #ccc
+        background-color: @firstSideBarHoverColor;
     }
   }
 
@@ -46,7 +49,7 @@ export default {
   }
 
   .active {
-      background-color: #ccc
+      background-color: @firstSideBarHoverColor;
   }
 }
 

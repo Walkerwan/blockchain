@@ -10,55 +10,64 @@
 			</ul>
 		</div>
 		<div class="admin-right-part">
-			<router-view></router-view>
+			<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
 		</div>
 	</div>
 </template>
 
 <script>
-import CommonUtil from '@/utils/common.js'
+import CommonUtil from "@/utils/common.js";
 export default {
-	methods: {
-		toggle(e) {
-			 const catalogsDom = this.$refs.catalogs;
-             CommonUtil.toggle(e.target, catalogsDom)
-		}
-	}
-}
+  methods: {
+    toggle(e) {
+      const catalogsDom = this.$refs.catalogs;
+      CommonUtil.toggle(e.target, catalogsDom);
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>
-@import '../../../../styles/theme.less';
+@import "../../../../styles/theme.less";
 .admin-left-part {
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	width: @secordSideBarWidth;
-	background-color: green;
-	.title {
-		height: 100px;
-		border-bottom: 1px solid #ccc;
-		text-align: center;
-	}
-	.list {
-		li .list-item {
-			display: block;
-			height: 45px;
-			line-height: 45px;
-			text-align: center;
-		}
-		.active {
-			background-color: #eee;
-		}
-	}
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: @secordSideBarWidth;
+  background-color: @secordSideBarBackgroundColor;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+  .title {
+    height: 100px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+  }
+  .list {
+    li .list-item {
+      display: block;
+      height: 45px;
+      line-height: 45px;
+	  text-align: center;
+	  color: @secordSideBarFontColor;
+      &:hover {
+        background-color: @secordSideBarHoverColor;
+      }
+    }
+    .active {
+      background-color: @secordSideBarHoverColor;
+    }
+  }
 }
 .admin-right-part {
-	position: absolute;
-	top: 0px;
-	bottom: 0px;
-	left: @secordSideBarWidth;
-	right: 0px;
-	background-color: skyblue
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: @secordSideBarWidth;
+  right: 0px;
+  background-color: @secordSideBarBackgroundColor;
+  overflow: auto;
 }
 </style>
 

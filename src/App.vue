@@ -21,3 +21,8 @@ export default {
 }
 </style>
 
+<style>
+@import './font/style.css';
+</style>
+
+

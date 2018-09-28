@@ -1,9 +1,9 @@
 <template>
     <div class="content-container">
-        <div class="left-part">
-            <left-catalog></left-catalog>
+        <div class="top-part">
+            <top-catalog></top-catalog>
         </div>
-        <div class="right-part">
+        <div class="bottom-part">
             <router-view></router-view>
         </div>
     </div>
@@ -11,34 +11,35 @@
 
 <script>
 /* eslint-disable */
-import LeftCatalog from '@/components/project-content/left-catalog/left-catalog.vue'
+import TopCatalog from "@/components/project-content/top-catalog/top-catalog.vue";
 
 export default {
-    components: {
-        LeftCatalog
-    },
-    methods: {
-
-    }
-}
+  components: {
+    TopCatalog
+  },
+  methods: {}
+};
 </script>
 
 <style lang="less" scoped>
-@import '../../styles/theme.less';
-.left-part {
+@import "../../styles/theme.less";
+.content-container {
+    overflow: hidden;
+  .top-part {
     position: absolute;
-    width: @firstSideBarWidth;
+    width: 100%;
+    height: @firstSideBarHeight;
     top: 0px;
-    bottom: 0px;
     background-color: @firstSideBarBackgroundColor;
     color: @firstSideBarFontColor;
     text-align: center;
-}
-.right-part {
+  }
+  .bottom-part {
     position: absolute;
-    left: @firstSideBarWidth;
-    right: 0px;
-    top: 0px;
+    width: 100%;
+    top: @firstSideBarHeight;
     bottom: 0px;
+    overflow: hidden;
+  }
 }
 </style>

@@ -5,7 +5,7 @@
             <h3>账号管理</h3>
             <div class="describe">企业账户，企业管理</div>
           </div>
-          <ul ref='catalogs' class="list" @click="toggle">
+          <ul ref='catalogs' class="list" @click="toggle" id="admin-list">
             <li class="active"><router-link class="list-item" to="/project/admin/homepage">首页</router-link></li>
             <li><router-link class="list-item" to="/project/admin/account">账号信息</router-link></li>
             <li><router-link class="list-item" to="/project/admin/account">结算账单</router-link></li>
@@ -83,9 +83,13 @@ export default {
     position: absolute;
     left: @secordSideBarWidth;
     right: 0px;
-    height: inherit;
+    top: 0px;
+    bottom: 0px;
     background-color: @secordContentBackgroundColor;
     overflow: auto;
+    &::-webkit-scrollbar {
+      width: 0px !important;
+    }
   }
 }
 </style>

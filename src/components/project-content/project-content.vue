@@ -4,7 +4,9 @@
             <top-catalog></top-catalog>
         </div>
         <div class="bottom-part">
+          <keep-alive>
             <router-view></router-view>
+          </keep-alive>
         </div>
     </div>
 </template>

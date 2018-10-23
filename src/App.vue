@@ -14,7 +14,7 @@ export default {
 @import './styles/base.less';
 @import './styles/common.less';
   #app {
-  font-family: "宋体","Arial","Microsoft YaHei","黑体",sans-serif;
+  font-family: "Microsoft YaHei","宋体","Arial","黑体",sans-serif;
   // -webkit-font-smoothing: antialiased;
   // -moz-osx-font-smoothing: grayscale;
   // color: #2c3e50;

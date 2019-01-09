@@ -1,11 +1,121 @@
-// 双伪元素清除浮动
-.clearfix:before,.clearfix:after{
-    content:"";
-    display:table;
- }
- .clearfix:after{
-   clear:both;
- }
- .clearfix{
-   *zoom:1;
- }
+
+
+//变量
+@fff:#fff;
+@1e:#1e1e1e;
+@a7:#a7a7a7;
+
+
+
+//部分常用class
+.inblock{
+  display:inline-block;
+}
+.middle{vertical-align: middle}
+.fleft{float:left;}
+.fright{float:right;}
+.textalgin{text-align: center}
+.textright{text-align:right}
+.textleft{text-align:left}
+.red{color:red;}
+.h3{
+  font-size: 16px;
+  font-weight: bold;
+}
+.lines-txt{
+  height: 25px;
+  line-height: 25px;
+  font-size: 22px;
+  color: #262626;
+  padding-left: 8px;
+  border-left: 4px solid #2c89eb;
+  margin-bottom: 25px;
+}
+.border-red{border:1px solid red!important;}
+.right0{
+  margin-right: 0!important;
+}
+.left0{
+  margin-left: 0!important;
+}
+.hei{
+  height: 65px;
+  width: 1px;
+}
+
+// json格式化的样式
+.Canvas {
+  font: 14px/18px;
+  background-color: #ECECEC;
+  color: #000000;
+  border: solid 1px #CECECE;
+}
+
+.ObjectBrace {
+  color: #00AA00;
+  font-weight: bold;
+}
+
+.ArrayBrace {
+  color: #0033FF;
+  font-weight: bold;
+}
+
+.PropertyName {
+  color: #CC0000;
+  font-weight: bold;
+}
+
+.String {
+  color: #007777;
+}
+
+.Number {
+  color: #AA00AA;
+}
+
+.Boolean {
+  color: #0000FF;
+}
+
+.Function {
+  color: #AA6633;
+  text-decoration: italic;
+}
+
+.Null {
+  color: #0000FF;
+}
+
+.Comma {
+  color: #000000;
+  font-weight: bold;
+}
+.CodeContainer {
+  display: block;
+  width: 100%;
+}
+
+// 点击波纹效果
+.waves{
+  position:relative;
+  cursor:pointer;
+  display:inline-block;
+  overflow:hidden;
+  text-align: center;
+  -webkit-tap-highlight-color:transparent;
+  z-index:1;
+}
+.waves .waves-animation{
+  position:absolute;
+  border-radius:50%;
+  width:25px;
+  height:25px;
+  opacity:0;
+  background:rgba(255,255,255,0.3);
+  transition:all 0.7s ease-out;
+  transition-property:transform, opacity, -webkit-transform;
+  -webkit-transform:scale(0);
+  transform:scale(0);
+  pointer-events:none
+}

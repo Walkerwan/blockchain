@@ -3,7 +3,3 @@
  */
 
 import Vue from 'vue'
-
-import SideBar from '@/components/project-common/sidebar.vue'
-
-Vue.component('side-bar', SideBar)

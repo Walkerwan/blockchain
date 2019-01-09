@@ -12,13 +12,11 @@ export default {
 
 <style lang="less">
 @import './styles/base.less';
-@import './styles/common.less';
   #app {
-  font-family: "Microsoft YaHei","宋体","Arial","黑体",sans-serif;
-  // -webkit-font-smoothing: antialiased;
-  // -moz-osx-font-smoothing: grayscale;
-  // color: #2c3e50;
-  /* margin-top: 60px; */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "微软雅黑","宋体","Arial","黑体",sans-serif;
 }
 </style>
 

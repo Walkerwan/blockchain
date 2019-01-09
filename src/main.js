@@ -3,9 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import iView from 'iview'
-import '@/components/components-registry'
-import 'iView/dist/styles/iview.css'
+import store from "./store";
+
+import "./font/style.css";
+
+import iView from 'iview';
+import './styles/iview.css'
+
+import '@/components/components-registry';
 
 Vue.use(iView)
 
@@ -15,7 +20,8 @@ Vue.config.productionTip = false
 /* eslint-disable */
 new Vue({
   el: '#app',
-  router,
+    router,
+    store,
   components: { App },
   template: '<App/>',
   watch: {

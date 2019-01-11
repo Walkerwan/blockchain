@@ -36,6 +36,8 @@ import { Interaction } from "three.interaction";
 THREE.Interaction = Interaction;
 let { MeshLine, MeshLineMaterial } = require("three.meshline");
 
+import Shader from "./assets/shader.js";
+
 // let tip = document.querySelector(".tip"); //tip提示框
 let width = 1920;
 let height = 1080;
@@ -48,6 +50,8 @@ let scene, //场景
   keyLight, //周围光(底光),点光源(主光)
   axis, //辅助坐标轴
   earth; //背景地球
+
+let ballsAndLine = new THREE.Group();
 
 //animation函数全局变量
 let step = 0; //帧函数计数器
@@ -289,7 +293,9 @@ function addEarth() {
   loader.load(require("./assets/earth2.jpg"), map => {
     let material = new THREE.MeshLambertMaterial({ map });
     earth = new THREE.Mesh(geometry, material);
-    earth.position.set(1500, 1800, -1800);
+    earth.position.set(1500, 500, -1800);
+    // axis = new THREE.AxesHelper(10000);
+    // earth.add(axis);
 
     let glow = new THREE.Mesh(
       geometry.clone().scale(1.1, 1.1, 1.1),
@@ -309,32 +315,8 @@ function addEarth() {
             value: new THREE.Color(0x0079c2)
           }
         },
-        vertexShader: `
-            varying vec3	vVertexWorldPosition;
-            varying vec3	vVertexNormal;
-            varying vec4	vFragColor;
-            void main(){
-                vVertexNormal	= normalize(normalMatrix * normal);
-                vVertexWorldPosition	= (modelMatrix * vec4(position, 1.0)).xyz;
-                gl_Position	= projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-            }
-        `,
-        fragmentShader: `
-            uniform vec3	glowColor;
-            uniform float	coeficient;
-            uniform float	power;
-            varying vec3	vVertexNormal;
-            varying vec3	vVertexWorldPosition;
-            varying vec4	vFragColor;
-            void main(){
-                vec3 worldVertexToCamera= cameraPosition - vVertexWorldPosition;
-                vec3 viewCameraToVertex	= (viewMatrix * vec4(worldVertexToCamera, 0.0)).xyz;
-                viewCameraToVertex	= normalize(viewCameraToVertex);
-                float intensity		= coeficient + dot(vVertexNormal, viewCameraToVertex);
-                if(intensity > 0.45){ intensity = 0.0;}
-                gl_FragColor		= vec4(glowColor, intensity);
-            }
-        `
+        vertexShader: Shader.erath.vertexShader,
+        fragmentShader: Shader.erath.fragmentShader
       })
     );
     earth.name = "earth";
@@ -352,23 +334,57 @@ function addEarth() {
     let track2 = new Track({
       position: new THREE.Vector3(0, 900, 0),
       direction: new THREE.Vector3(1, 0, 0),
-      speed: 0.02
+      speed: 0.04
     });
     tracks.push(track2);
     earth.add(track2.group);
 
     let track3 = new Track({
-      position: new THREE.Vector3(0, 0, 900),
-      direction: new THREE.Vector3(1, 1, 0).normalize(),
-      speed: 0.03
+      position: new THREE.Vector3(636, 636, 0),
+      direction: new THREE.Vector3(-1, 1, 0).normalize(),
+      speed: 0.04
     });
-    tracks.push(track2);
-    earth.add(track2.group);
+    tracks.push(track3);
+    earth.add(track3.group);
+
+    let track4 = new Track({
+      position: new THREE.Vector3(520, 520, 520),
+      direction: new THREE.Vector3(-1, 1, 0).normalize(),
+      speed: 0.04
+    });
+    tracks.push(track4);
+    earth.add(track4.group);
+
+    let track5 = new Track({
+      position: new THREE.Vector3(520, 520, 520),
+      direction: new THREE.Vector3(0, 1, -1).normalize(),
+      speed: 0.04
+    });
+    tracks.push(track5);
+    earth.add(track5.group);
+
+    let track6 = new Track({
+      position: new THREE.Vector3(520, 520, 520),
+      direction: new THREE.Vector3(-1, 0, 1).normalize(),
+      speed: 0.04
+    });
+    tracks.push(track6);
+    earth.add(track6.group);
+
+    let track7 = new Track({
+      position: new THREE.Vector3(520, 520, 520),
+      direction: new THREE.Vector3(1, 0, 0).normalize(),
+      speed: 0.04
+    });
+    tracks.push(track7);
+    earth.add(track7.group);
 
     scene.add(earth);
   });
 }
 function initDate() {
+  ballsAndLine.position.set(-200, -250, 0);
+  scene.add(ballsAndLine);
   points.forEach(point => {
     point[2] = Math.random() * 100;
   });
@@ -376,10 +392,19 @@ function initDate() {
   for (let i = 0; i < points.length; i++) {
     let point = points[i];
     let ball = new THREE.Mesh(
-      new THREE.SphereGeometry(5, 50, 50),
-      new THREE.MeshLambertMaterial({
-        color: 0xffffff,
-        side: THREE.DoubleSide
+      new THREE.SphereGeometry(10, 50, 50),
+      new THREE.ShaderMaterial({
+        uniforms: {
+          colorInside: {
+            value: new THREE.Color(0x0767ab)
+          },
+          colorOuter: {
+            value: new THREE.Color(0x0767ab)
+          }
+        },
+        vertexShader: Shader.ball.vertexShader,
+        fragmentShader: Shader.ball.fragmentShader,
+        transparent: true
       })
     );
     ball.position.set(point[0], point[1], point[2]);
@@ -390,10 +415,6 @@ function initDate() {
       let target = ev && ev.data.target;
       console.log(target.name);
       target.scale.set(1.5, 1.5, 1.5);
-      if (starNames[target.name]) {
-        starNames[target.name].lookAt(camera.position);
-        starNames[target.name].visible = true;
-      }
 
       let mouse = ev.data.originalEvent;
       Window.sky.tip.style.display = "block";
@@ -405,15 +426,11 @@ function initDate() {
     });
     ball.on("mouseout", ev => {
       let target = ev && ev.data.target;
-      // console.log(target.name);
       target.scale.set(1, 1, 1);
-      if (starNames[target.name]) {
-        starNames[target.name].visible = false;
-      }
       Window.sky.tip.style.display = "none";
     });
     if (showBallDefault.includes(i)) {
-      scene.add(ball);
+      ballsAndLine.add(ball);
     }
   }
 
@@ -431,11 +448,11 @@ function initDate() {
     lineGeometry.verticesNeedUpdate = true;
     let connectionLine = new THREE.Line(
       lineGeometry,
-      new THREE.LineBasicMaterial({ color: 0xffffff })
+      new THREE.LineBasicMaterial({ color: 0x1ebacc })
     );
     connectionLine.name = "line-" + line[0] + "-" + line[1];
     connectionLines.push(connectionLine);
-    scene.add(connectionLine);
+    ballsAndLine.add(connectionLine);
   }
 }
 
@@ -465,7 +482,6 @@ function update() {
   earth && earth.rotateOnAxis(new THREE.Vector3(0, 0, 1), 0.001);
 
   tracks.forEach(track => {
-    // track.group.rotateOnAxis(new THREE.Vector3(0,0,1),0.04);
     track.group.rotateOnAxis(track.direction, track.speed);
     let nodePosition = track.cube.position.clone();
     let nodeWorldPosition = nodePosition.applyMatrix4(track.group.matrix);
@@ -485,8 +501,8 @@ function connectionLine(connectionLine, step) {
   connectionLine.geometry.vertices[1] = new THREE.Vector3(x, y, z);
   connectionLine.geometry.verticesNeedUpdate = true;
   if (step === 1) {
-    scene.remove(balls[connectionLine.name.split("-")[2]]);
-    scene.add(balls[connectionLine.name.split("-")[2]]);
+    ballsAndLine.remove(balls[connectionLine.name.split("-")[2]]);
+    ballsAndLine.add(balls[connectionLine.name.split("-")[2]]);
   }
   // scene.position.add(new THREE.Vector3(-0.05,-0.01,0.01))
   cameraTarget.add(new THREE.Vector3(0.1, 0.01, 0.03));

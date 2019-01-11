@@ -58,11 +58,13 @@
           <div class="highlight"></div>
       </div>
     </div>
+    <sky></sky>
   </div>
 </template>
 
 <script>
 import { homepageList } from "@/constant.js";
+import Sky from "./3d";
 export default {
   data() {
     return {
@@ -102,6 +104,9 @@ export default {
     clickControlButton() {
       this.isShowList = !this.isShowList;
     }
+  },
+  components: {
+    Sky
   }
 };
 </script>

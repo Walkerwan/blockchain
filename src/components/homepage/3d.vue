@@ -293,7 +293,7 @@ function addEarth() {
   loader.load(require("./assets/earth2.jpg"), map => {
     let material = new THREE.MeshLambertMaterial({ map });
     earth = new THREE.Mesh(geometry, material);
-    earth.position.set(1500, 500, -1800);
+    earth.position.set(1500, 800, -1800);
     // axis = new THREE.AxesHelper(10000);
     // earth.add(axis);
 
@@ -383,7 +383,7 @@ function addEarth() {
   });
 }
 function initDate() {
-  ballsAndLine.position.set(-200, -250, 0);
+  ballsAndLine.position.set(-200, -150, 0);
   scene.add(ballsAndLine);
   points.forEach(point => {
     point[2] = Math.random() * 100;
@@ -504,10 +504,11 @@ function connectionLine(connectionLine, step) {
     ballsAndLine.remove(balls[connectionLine.name.split("-")[2]]);
     ballsAndLine.add(balls[connectionLine.name.split("-")[2]]);
   }
-  // scene.position.add(new THREE.Vector3(-0.05,-0.01,0.01))
-  cameraTarget.add(new THREE.Vector3(0.1, 0.01, 0.03));
-  camera.lookAt(cameraTarget);
-  camera.position.add(new THREE.Vector3(0.1, 0.01, 0.03));
+
+  // cameraTarget.add(new THREE.Vector3(0.1, 0.01, 0.03));
+  // camera.lookAt(cameraTarget);
+  // camera.position.add(new THREE.Vector3(0.1, 0.01, 0.03));
+  ballsAndLine.position.add(new THREE.Vector3(-0.1, -0.01, -0.03));
 }
 function Track({ position, direction, speed }) {
   this.direction = direction;

@@ -41,69 +41,21 @@
         </li>
       </ul>
     </div>
-    <div class="homepage-list">
-      <ul class="homepage-list-content" :class="{'homepage-list-spread':isShowList}">
-        <li
-          class="homepage-list-item user-noselect"
-          :class="{active:item.active}"
-          v-for="(item,index) in homepageList"
-          :key="index"
-          @click="skipRoute(item)"
-        >
-          <span class="item-icon" :style="listItemStyle(item)"></span>
-          <span>{{item.name}}</span>
-        </li>
-      </ul>
-      <div class="control-bottom" @click="clickControlButton" :style="controlStyle">
-          <div class="highlight"></div>
-      </div>
-    </div>
     <sky></sky>
   </div>
 </template>
 
 <script>
-import { homepageList } from "@/constant.js";
 import Sky from "./3d";
 export default {
   data() {
     return {
-      homepageList: homepageList,
-      isShowList: false
     };
   },
   computed: {
-    // 控制按钮的图片样式
-    controlStyle() {
-      if (this.isShowList) {
-        return {
-          backgroundImage: "url(" + require("./assets/spread.png") + ")"
-        };
-      }
-      return {
-        backgroundImage: "url(" + require("./assets/flexible.png") + ")"
-      };
-    }
   },
   methods: {
-    // 列表样式
-    listItemStyle(item) {
-      return {
-        backgroundImage: "url(" + require("./assets/" + item.iconUrl) + ")",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center center"
-      };
-    },
-    skipRoute(targetItem) {
-      homepageList.forEach(item => {
-        item.active = false;
-      });
-      targetItem.active = true;
-      this.$router.push({ path: targetItem.url });
-    },
-    clickControlButton() {
-      this.isShowList = !this.isShowList;
-    }
+
   },
   components: {
     Sky

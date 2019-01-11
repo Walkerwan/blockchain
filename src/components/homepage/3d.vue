@@ -7,9 +7,12 @@
 
 <style>
 .show {
-  width: 1920;
-  height: 1080;
-  border: 1px solid #ccc;
+  width: 1920px;
+  height: 1080px;
+  /* border: 1px solid #ccc; */
+}
+.show canvas {
+  vertical-align: top;
 }
 
 .tip {
@@ -33,7 +36,7 @@ import { Interaction } from "three.interaction";
 THREE.Interaction = Interaction;
 let { MeshLine, MeshLineMaterial } = require("three.meshline");
 
-let tip = document.querySelector(".tip"); //tip提示框
+// let tip = document.querySelector(".tip"); //tip提示框
 let width = 1920;
 let height = 1080;
 
@@ -393,10 +396,10 @@ function initDate() {
       }
 
       let mouse = ev.data.originalEvent;
-      tip.style.display = "block";
-      tip.style.left = mouse.clientX + "px";
-      tip.style.top = mouse.clientY + "px";
-      tip.innerHTML = `<div style='color:#ffffff;padding: 5px;'>Name is :${
+      Window.sky.tip.style.display = "block";
+      Window.sky.tip.style.left = mouse.clientX + "px";
+      Window.sky.tip.style.top = mouse.clientY + "px";
+      Window.sky.tip.innerHTML = `<div style='color:#ffffff;padding: 5px;'>Name is :${
         ball.name
       }</div>>`;
     });
@@ -407,7 +410,7 @@ function initDate() {
       if (starNames[target.name]) {
         starNames[target.name].visible = false;
       }
-      tip.style.display = "none";
+      Window.sky.tip.style.display = "none";
     });
     if (showBallDefault.includes(i)) {
       scene.add(ball);
@@ -527,6 +530,8 @@ function Track({ position, direction, speed }) {
 
 export default {
   mounted() {
+    Window.sky = {};
+    Window.sky.tip = document.querySelector(".tip"); //tip提示框
     start();
   }
 };

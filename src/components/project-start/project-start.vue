@@ -68,12 +68,9 @@ export default {
       this.$router.push({ path: targetItem.url });
       if(targetItem.init) {
         this.activeWindow(homepageList);
-        window.sessionStorage.setItem("routelist",JSON.stringify(this.catalogList))
-        return
       }
       if(targetItem.listName) {
         this.activeWindow(targetItem.listName);
-        window.sessionStorage.setItem("routelist",JSON.stringify(this.catalogList))
       }
     },
     clickControlButton() {
@@ -84,6 +81,8 @@ export default {
       this.isShowList = false;
       setTimeout(() => {
         this.catalogList = targetCatalog;
+        window.sessionStorage.setItem("routelist",JSON.stringify(this.catalogList))
+        return
         this.isShowList = true;
       }, 1000);
     }

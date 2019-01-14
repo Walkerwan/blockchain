@@ -188,7 +188,7 @@ function initLight() {
   ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
   scene.add(ambientLight);
   keyLight = new THREE.SpotLight(0xffffff);
-  keyLight.position.set(1000, 1000, 2000);
+  keyLight.position.set(2000, 2000, 4000);
   keyLight.target.position.set(0, 0, 0);
   scene.add(keyLight);
 }
@@ -211,7 +211,7 @@ function initBackGround() {
 
   let color = new THREE.Color();
 
-  const gap = 2000; // 定义星星的最近出现位置
+  const gap = 2500; // 定义星星的最近出现位置
   for (let i = 0; i < positions.length; i += 3) {
     // positions
 
@@ -293,7 +293,7 @@ function addEarth() {
   loader.load(require("./assets/earth2.jpg"), map => {
     let material = new THREE.MeshLambertMaterial({ map });
     earth = new THREE.Mesh(geometry, material);
-    earth.position.set(1500, 800, -1800);
+    earth.position.set(2900, 1700, -2000);
     // axis = new THREE.AxesHelper(10000);
     // earth.add(axis);
 
@@ -392,7 +392,7 @@ function initDate() {
   for (let i = 0; i < points.length; i++) {
     let point = points[i];
     let ball = new THREE.Mesh(
-      new THREE.SphereGeometry(10, 50, 50),
+      new THREE.SphereGeometry(15, 50, 50),
       new THREE.ShaderMaterial({
         uniforms: {
           colorInside: {
@@ -465,7 +465,7 @@ function animation() {
 }
 function update() {
   //线动
-  let count = 150;
+  let count = 1500;
   let lines = lineConnectionOrder[num];
   if (lines) {
     if (step < count + 1) {
@@ -479,7 +479,7 @@ function update() {
   }
 
   //背景地球动
-  earth && earth.rotateOnAxis(new THREE.Vector3(0, 0, 1), 0.001);
+  earth && earth.rotateOnAxis(new THREE.Vector3(0, 1, 0), 0.001);
 
   tracks.forEach(track => {
     track.group.rotateOnAxis(track.direction, track.speed);
@@ -508,7 +508,7 @@ function connectionLine(connectionLine, step) {
   // cameraTarget.add(new THREE.Vector3(0.1, 0.01, 0.03));
   // camera.lookAt(cameraTarget);
   // camera.position.add(new THREE.Vector3(0.1, 0.01, 0.03));
-  ballsAndLine.position.add(new THREE.Vector3(-0.1, -0.01, -0.03));
+  ballsAndLine.position.add(new THREE.Vector3(-0.01, -0.001, -0.003));
 }
 function Track({ position, direction, speed }) {
   this.direction = direction;
@@ -517,6 +517,7 @@ function Track({ position, direction, speed }) {
   // this.group.matrixWorldNeedsUpdate = true;
   // let position  = position;
   let startColor = 0x1c5776;
+  startColor = 0xfff6c2;
   let segmentsCount = 50;
   let lineGeometry = new THREE.Geometry();
   for (let i = 0; i < segmentsCount; i++) {
@@ -531,7 +532,7 @@ function Track({ position, direction, speed }) {
     this.g.geometry,
     new MeshLineMaterial({
       color: new THREE.Color(startColor),
-      lineWidth: 10
+      lineWidth: 5
     })
   );
   earth.add(this.line);

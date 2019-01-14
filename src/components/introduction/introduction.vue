@@ -47,8 +47,12 @@
           <video
             width="612"
             height="420"
+            preload="none"
+            type="video/mp4"
             controls="controls"
-          >这里是注释文字，如果无法支持 HTML 5 浏览器将显示这里的文字。如果支持，就直接显示视频，忽略文字。</video>
+          >
+          <source src="http://www.su1010.org/video/PaaS.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
       <div class="introduction-item4">

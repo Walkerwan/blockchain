@@ -82,8 +82,8 @@ export default {
       setTimeout(() => {
         this.catalogList = targetCatalog;
         window.sessionStorage.setItem("routelist",JSON.stringify(this.catalogList))
-        return
         this.isShowList = true;
+        return
       }, 1000);
     }
   }

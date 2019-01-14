@@ -1,49 +1,53 @@
-.cooper-container{
-    width: 100%;
-    height: 100%;
-    background: url("../asset/cooper/cooperBackground.png");
-    padding-top: 240px;
+.cooper-container {
+  width: 100%;
+  height: 100%;
+  background: url("../asset/cooper/cooperBackground.png");
+  padding-top: 240px;
 
-    .title{
+  .title {
+    text-align: center;
+    h2 {
+      font-size: 28px;
+      color: #ffffff;
+      height: 60px;
+      line-height: 60px;
+    }
+    p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      height: 24px;
+      line-height: 24px;
+    }
+  }
+  .content {
+    width: 1136px;
+    height: 450px;
+    margin: 60px auto;
+
+    .row {
+      width: 100%;
+      height: 203px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: -80px;
+
+      .details {
+        cursor: pointer;
+        width: 210px;
+        height: 203px;
+        background: url("../asset/cooper/logobg.png");
+        margin: 0 8px;
         text-align: center;
-        h2{
-            font-size: 28px;
-            color: #ffffff;
-            height: 60px;
-            line-height: 60px;
+        transition: all 0.5s;
+        &:hover {
+          transform: scale(1.05);
         }
-        p{
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            height: 24px;
-            line-height: 24px; 
+        img {
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
         }
+      }
     }
-    .content{
-        width: 1136px;
-        height: 450px;
-        margin: 60px auto;
-
-        .row{
-            width: 100%;
-            height: 203px;
-            display: flex;
-            justify-content: center;
-            margin-bottom: -80px;
-
-            .details{
-                width: 210px;
-                height: 203px;
-                background: url("../asset/cooper/logobg.png");
-                margin: 0 8px;
-                text-align: center;
-    
-                img{
-                    position: relative;
-                    top: 50%;
-                    transform: translateY(-50%)
-                }
-            }
-        }
-    }
+  }
 }

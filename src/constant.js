@@ -3,6 +3,26 @@ export const homepageList = [{
     iconUrl: 'introduction.png',
     url: '/project/introduction',
     active: true,
+    listName: [{
+        name: '公司介绍',
+        iconUrl: 'architecture-introduction.png',
+        url: '/project/introduction',
+        active: true,
+      },
+      {
+        name: '合作伙伴',
+        iconUrl: 'cooper.png',
+        url: '/project/cooper',
+        active: false,
+      },
+      {
+        name: '返回首页',
+        init: true,
+        iconUrl: 'homepage.png',
+        url: '/project/homepage',
+        active: false,
+      }
+    ]
   },
   {
     name: 'ZCBaaS',
@@ -17,7 +37,7 @@ export const homepageList = [{
       {
         name: '架构介绍',
         iconUrl: 'architecture-introduction.png',
-        url: '/project/zcbass',
+        url: '/project/archind',
         active: false,
       },
       {

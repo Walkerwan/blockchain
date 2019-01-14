@@ -67,17 +67,25 @@ export default {
       targetItem.active = true;
       this.$router.push({ path: targetItem.url });
       if(targetItem.init) {
-        this.catalogList = homepageList;
+        this.activeWindow(homepageList);
         window.sessionStorage.setItem("routelist",JSON.stringify(this.catalogList))
         return
       }
       if(targetItem.listName) {
-        this.catalogList = targetItem.listName;
+        this.activeWindow(targetItem.listName);
         window.sessionStorage.setItem("routelist",JSON.stringify(this.catalogList))
       }
     },
     clickControlButton() {
       this.isShowList = !this.isShowList;
+    },
+    // 隐藏打开窗口
+    activeWindow(targetCatalog) {
+      this.isShowList = false;
+      setTimeout(() => {
+        this.catalogList = targetCatalog;
+        this.isShowList = true;
+      }, 1000);
     }
   }
 };

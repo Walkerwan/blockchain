@@ -1,0 +1,241 @@
+.zcbass-container {
+  width: 100%;
+  height: 100%;
+  background-image: url("../../../assets/start-homepage.jpg");
+  padding-top: 124px;
+
+  .container {
+    width: 1727px;
+    margin: 0 auto;
+    .businessLayer {
+      height: 61px;
+      background-color: #08d8d8;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      text-align: center;
+      line-height: 61px;
+      color: #000;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .body {
+      height: 778px;
+      display: flex;
+
+      .safe,
+      .operation {
+        width: 211px;
+
+        .title {
+          color: #fff;
+          font-size: 20px;
+          text-indent: 33px;
+          height: 72px;
+          line-height: 66px;
+        }
+        ul {
+          li {
+            width: 180px;
+            font-size: 16px;
+            color: #010101;
+            height: 53px;
+            border: 3px solid #00fefe;
+            background-color: #c0ffff;
+            border-radius: 12px;
+            text-indent: 24px;
+            margin: 0 auto 25px auto;
+            line-height: 47px;
+          }
+        }
+      }
+      .bussiness {
+        width: 100%;
+        flex: 1;
+        background-color: rgba(255, 255, 255, 0.1);
+
+        .container {
+          width: 1245px;
+
+          > .title {
+            display: flex;
+            justify-content: space-between;
+            div {
+              width: 180px;
+              height: 53px;
+              line-height: 47px;
+              background-color: #067d7e;
+              color: #f0ffff;
+              border-radius: 12px;
+              border: 3px solid #01caca;
+              font-size: 18px;
+              text-align: center;
+              margin: 19px 0px;
+            }
+          }
+          .arrow {
+            height: 35px;
+            display: flex;
+            justify-content: space-around;
+            margin: 5px;
+            .arrow-icon {
+              width: 30px;
+              height: 17px;
+              background-color: #00fefe;
+              position: relative;
+
+              &::before {
+                content: "";
+                position: absolute;
+                top: -18px;
+                left: -13px;
+                height: 0;
+                width: 0;
+                border-bottom: 9px solid #00fefe;
+                border-top: 9px solid transparent;
+                border-left: 28px solid transparent;
+                border-right: 28px solid transparent;
+              }
+              &::after {
+                content: "";
+                position: absolute;
+                top: 17px;
+                left: -13px;
+                height: 0;
+                width: 0;
+                border-bottom: 9px solid transparent;
+                border-top: 9px solid #00fefe;
+                border-left: 28px solid transparent;
+                border-right: 28px solid transparent;
+              }
+            }
+          }
+          .product {
+            > .title {
+              width: 100%;
+              height: 61px;
+              line-height: 61px;
+              background-color: #00c0c0;
+              border-radius: 12px;
+              color: #ffffff;
+              font-size: 18px;
+              text-align: center;
+            }
+            .details {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 25px;
+
+              > div {
+                width: 395px;
+                height: 53px;
+                line-height: 53px;
+                background-color: #61c5ff;
+                text-align: center;
+                color: #010101;
+              }
+            }
+          }
+          .APIAndSDK {
+            margin-top: 27px;
+            > .title {
+              height: 61px;
+              line-height: 61px;
+              background-color: #0083c0;
+              text-align: center;
+              color: #fff;
+              font-size: 18px;
+              border-radius: 12px;
+              margin-bottom: 17px;
+            }
+            .chain {
+              display: flex;
+              > .title {
+                height: 200px;
+                width: 68px;
+                padding: 64px 30px 0 16px;
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 24px;
+              }
+              .details {
+                flex: 1;
+
+                .row1,
+                .row2 {
+                  justify-content: space-between;
+                }
+                .row3 {
+                  justify-content: flex-start;
+                  > div {
+                    margin-right: 54px;
+                  }
+                }
+                .row {
+                  display: flex;
+                  flex-wrap: wrap;
+                  > div {
+                    width: 192px;
+                    height: 53px;
+                    line-height: 53px;
+                    background-color: #e3e3e3;
+                    color: #000000;
+                    text-align: center;
+                    margin-bottom: 20px;
+                  }
+                }
+              }
+            }
+            .doubleChain {
+              display: flex;
+              margin-bottom: 13px;
+              > .title {
+                height: 65px;
+                width: 68px;
+                padding: 8px 30px 0 16px;
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 24px;
+              }
+              .details {
+                flex: 1;
+                height: 65px;
+                line-height: 65px;
+                text-align: center;
+                border: 3px solid #d6d6d6;
+                background-color: #67baba;
+                color: #feffff;
+              }
+            }
+            .container {
+              display: flex;
+              > .title {
+                height: 65px;
+                width: 68px;
+                padding: 8px 30px 0 16px;
+                font-size: 18px;
+                color: #ffffff;
+                line-height: 24px;
+              }
+              .details {
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 330px;
+                height: 65px;
+                line-height: 65px;
+                text-align: center;
+                border: 3px solid #d6d6d6;
+                background-color: #67baba;
+                div {
+                  height: 100%;
+                  line-height: 65px;
+                  color: #ffffff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
